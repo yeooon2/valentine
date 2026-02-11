@@ -1,4 +1,3 @@
-alert("🔥 새 스크립트 로드됨");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
