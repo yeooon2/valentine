@@ -20,15 +20,10 @@ yesBtn.addEventListener("click", () => {
     <div class="container">
       <h1 class="neon">💖 내꺼하자 💖</h1>
 
-      <!-- 🐶 공개소스 귀여운 캐릭터 (Wikimedia) -->
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/320px-Golde33443.jpg"
-        alt="cute puppy"
-        class="dog"
-      >
+      <div class="dog">🐶</div>
 
       <p class="sub">
-        YES 눌러줘서 고마워 🐶💗
+        YES 눌러줘서 고마워 💗
       </p>
     </div>
 
@@ -53,7 +48,7 @@ yesBtn.addEventListener("click", () => {
         z-index: 2;
       }
 
-      /* ✨ 네온사인 글씨 */
+      /* ✨ 네온사인 */
       .neon {
         font-size: 48px;
         color: #fff;
@@ -68,52 +63,51 @@ yesBtn.addEventListener("click", () => {
 
       @keyframes flicker {
         0% { opacity: 1; }
-        100% { opacity: 0.8; }
+        100% { opacity: 0.85; }
       }
 
-      /* 🐶 좌우 흔들 */
+      /* 🐶 흔들리는 강아지 */
       .dog {
-        width: 220px;
-        border-radius: 20px;
+        font-size: 120px;
         animation: wiggle 1.2s infinite ease-in-out;
       }
 
       @keyframes wiggle {
         0% { transform: rotate(0deg); }
-        25% { transform: rotate(5deg); }
+        25% { transform: rotate(8deg); }
         50% { transform: rotate(0deg); }
-        75% { transform: rotate(-5deg); }
+        75% { transform: rotate(-8deg); }
         100% { transform: rotate(0deg); }
       }
 
       .sub {
         font-size: 20px;
-        margin-top: 15px;
+        margin-top: 10px;
       }
 
-      /* 💕 하트 날리기 */
+      /* 💖 하트 비 */
       .heart {
         position: absolute;
-        bottom: -20px;
-        font-size: 20px;
-        animation: floatUp 4s linear forwards;
-        opacity: 0.8;
+        top: -30px;
+        font-size: 22px;
+        animation: fall linear forwards;
+        opacity: 0.9;
       }
 
-      @keyframes floatUp {
+      @keyframes fall {
         0% {
-          transform: translateY(0) scale(1);
+          transform: translateY(0);
           opacity: 1;
         }
         100% {
-          transform: translateY(-100vh) scale(1.5);
+          transform: translateY(110vh);
           opacity: 0;
         }
       }
     </style>
   `;
 
-  /* 💗 하트 생성 */
+  /* 💖 하트 비 생성 */
   const heartsContainer = document.querySelector(".hearts");
 
   setInterval(() => {
@@ -121,12 +115,12 @@ yesBtn.addEventListener("click", () => {
     heart.className = "heart";
     heart.innerText = "💗";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+    heart.style.animationDuration = 3 + Math.random() * 3 + "s";
 
     heartsContainer.appendChild(하트);
 
     setTimeout(() => {
       heart.remove();
-    }, 5000);
-  }, 300);
+    }, 6000);
+  }, 200);
 });
