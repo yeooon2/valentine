@@ -1,6 +1,5 @@
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const music = document.getElementById("music");
 
 /* ❌ NO 버튼 도망 */
 function moveNoButton() {
@@ -15,23 +14,20 @@ function moveNoButton() {
 noBtn.addEventListener("mouseover", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
-/* ✅ YES 버튼 클릭 */
+/* ✅ YES 버튼 */
 yesBtn.addEventListener("click", () => {
-  // 🎵 노래 재생 (사용자 클릭 이후라 모바일도 OK)
-  if (music) {
-    music.volume = 0.7;
-    music.play().catch(() => {});
-  }
+
+  /* 🎵 노래 생성 & 재생 */
+  const music = new Audio("노래.mp3");
+  music.volume = 0.7;
+  music.loop = true;
+  music.play().catch(() => {});
 
   document.body.innerHTML = `
     <div class="container">
       <h1 class="neon">💖 내꺼하자 💖</h1>
-
       <div class="dog">🐶</div>
-
-      <p class="sub">
-        YES 눌러줘서 고마워 💗
-      </p>
+      <p class="sub">YES 눌러줘서 고마워 💗</p>
     </div>
 
     <div class="hearts"></div>
@@ -63,60 +59,53 @@ yesBtn.addEventListener("click", () => {
           0 0 12px #ff4da6,
           0 0 24px #ff80bf,
           0 0 48px #ff80bf;
-        animation: flicker 1.4s infinite alternate;
-        margin-bottom: 20px;
+        animation: flicker 1.5s infinite alternate;
       }
 
       @keyframes flicker {
-        0% { opacity: 1; }
-        100% { opacity: 0.85; }
+        from { opacity: 1; }
+        to { opacity: 0.85; }
       }
 
       .dog {
         font-size: 120px;
-        animation: wiggle 1.2s infinite ease-in-out;
+        animation: wiggle 1.2s infinite;
       }
 
       @keyframes wiggle {
-        0% { transform: rotate(0deg); }
+        0% { transform: rotate(0); }
         25% { transform: rotate(8deg); }
-        50% { transform: rotate(0deg); }
+        50% { transform: rotate(0); }
         75% { transform: rotate(-8deg); }
-        100% { transform: rotate(0deg); }
+        100% { transform: rotate(0); }
       }
 
-      .sub {
-        font-size: 20px;
-        margin-top: 10px;
-      }
-
-      /* 💖 하트 비 */
       .heart {
         position: absolute;
         top: -30px;
-        font-size: 22px;
+        font-size: 24px;
         animation: fall linear forwards;
-        opacity: 0.9;
       }
 
       @keyframes fall {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(110vh); opacity: 0; }
+        to {
+          transform: translateY(110vh);
+          opacity: 0;
+        }
       }
     </style>
   `;
 
-  /* 💖 하트 비 생성 */
-  const heartsContainer = document.querySelector(".hearts");
+  /* 💖 하트 비 */
+  const hearts = document.querySelector(".hearts");
 
   setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.innerText = "💗";
+    heart.innerText = "💖";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.animationDuration = 3 + Math.random() * 3 + "s";
-
-    heartsContainer.appendChild(하트);
+    hearts.appendChild(하트);
 
     setTimeout(() => heart.remove(), 6000);
   }, 200);
