@@ -18,7 +18,7 @@ noBtn.addEventListener("touchstart", moveNoButton);
 yesBtn.addEventListener("click", () => {
 
   /* 🎵 노래 생성 & 재생 */
-  const music = new Audio("노래.mp3");
+  const music = new Audio("love.mp3");
   music.volume = 0.7;
   music.loop = true;
   music.play().catch(() => {});
