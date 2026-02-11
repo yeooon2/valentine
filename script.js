@@ -1,5 +1,6 @@
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const music = document.getElementById("music");
 
 /* ❌ NO 버튼 도망 */
 function moveNoButton() {
@@ -16,6 +17,12 @@ noBtn.addEventListener("touchstart", moveNoButton);
 
 /* ✅ YES 버튼 클릭 */
 yesBtn.addEventListener("click", () => {
+  // 🎵 노래 재생 (사용자 클릭 이후라 모바일도 OK)
+  if (music) {
+    music.volume = 0.7;
+    music.play().catch(() => {});
+  }
+
   document.body.innerHTML = `
     <div class="container">
       <h1 class="neon">💖 내꺼하자 💖</h1>
@@ -48,7 +55,6 @@ yesBtn.addEventListener("click", () => {
         z-index: 2;
       }
 
-      /* ✨ 네온사인 */
       .neon {
         font-size: 48px;
         color: #fff;
@@ -66,7 +72,6 @@ yesBtn.addEventListener("click", () => {
         100% { opacity: 0.85; }
       }
 
-      /* 🐶 흔들리는 강아지 */
       .dog {
         font-size: 120px;
         animation: wiggle 1.2s infinite ease-in-out;
@@ -95,14 +100,8 @@ yesBtn.addEventListener("click", () => {
       }
 
       @keyframes fall {
-        0% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(110vh);
-          opacity: 0;
-        }
+        0% { transform: translateY(0); }
+        100% { transform: translateY(110vh); opacity: 0; }
       }
     </style>
   `;
@@ -119,8 +118,6 @@ yesBtn.addEventListener("click", () => {
 
     heartsContainer.appendChild(하트);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 6000);
+    setTimeout(() => heart.remove(), 6000);
   }, 200);
 });
