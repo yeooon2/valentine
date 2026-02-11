@@ -21,7 +21,7 @@ yesBtn.addEventListener("click", () => {
       <h1 class="neon">💖 내꺼하자 💖</h1>
 
       <img
-        src="https://i.imgur.com/5MZocCk.png"
+        src="dog.png"
         class="dog"
         alt="cute dog"
       >
